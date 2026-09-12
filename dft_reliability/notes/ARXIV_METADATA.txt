@@ -1,0 +1,17 @@
+Title: Budget-aware reliability auditing of DFT force datasets: Physical consistency, error prediction and missed failures
+
+Authors: Sinan Gokmen
+
+Affiliation: Department of Chemistry, Istanbul Technical University
+Email: gokmens23@itu.edu.tr
+
+Suggested primary category: physics.comp-ph
+Optional cross-list: physics.chem-ph
+
+Comments: 11 pages, 4 figures. Code and results: https://github.com/SinanGokmen/rmt-reaction-kinetics/tree/main/dft_reliability
+
+Abstract:
+Large density-functional-theory datasets support molecular and materials discovery, but the reliability of individual calculations remains a separate question from surrogate-model accuracy. We formulate reliability auditing as a budgeted search for discrepancies between existing force labels and tightly recomputed references. Physical consistency scores and learned error predictors are compared with explicit accounting for the reference calculations used to train the latter. A retrospective benchmark uses 2,000 public paired configurations from AIMNet2 and Transition1x, with molecular-formula separation between seed references and unseen audit pools. At an average total reference budget of 28.04% of each sample, direct force/torque screening recovers 95.0% of the worst-discrepancy decile on AIMNet2, compared with 77.6% for either ridge or a spectral bulk-pooled ridge predictor. On Transition1x, the physical screen recovers 31.8%, while a tree predictor reaches 39.0% with substantial scenario variation. More seriously, the physical screen misses the single configuration contributing 97.75% of the sample's squared discrepancy. Elementary bounds explain why small symmetry violations cannot certify accurate forces, and a decision formulation distinguishes error-count from error-impact objectives. The results support budget-aware, multi-indicator auditing while providing no evidence for universal detection or a special random-matrix advantage.
+
+Journal reference: leave blank (not published in a journal).
+DOI: leave blank (not assigned).

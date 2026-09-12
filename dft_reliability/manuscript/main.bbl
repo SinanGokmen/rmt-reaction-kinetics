@@ -1,0 +1,73 @@
+\begin{thebibliography}{8}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Bosoni et~al.(2024)Bosoni, Beal, Bercx, et~al.]{bosoni2024}
+Emanuele Bosoni, Louis Beal, Marnik Bercx, et~al.
+\newblock How to verify the precision of density-functional-theory
+  implementations via reproducible and universal workflows.
+\newblock \emph{Nature Reviews Physics}, 6:\penalty0 45--58, 2024.
+\newblock \doi{10.1038/s42254-023-00655-3}.
+\newblock URL \url{https://arxiv.org/abs/2305.17274}.
+
+\bibitem[Carbogno et~al.(2022)Carbogno, Thygesen, Bieniek, Draxl, Ghiringhelli,
+  Gulans, Hofmann, Jacobsen, Lubeck, Mortensen, Strange, Wruss, and
+  Scheffler]{carbogno2022}
+Christian Carbogno, Kristian~Sommer Thygesen, Bj{\"o}rn Bieniek, Claudia Draxl,
+  Luca~M. Ghiringhelli, Andris Gulans, Oliver~T. Hofmann, Karsten~W. Jacobsen,
+  Sven Lubeck, Jens~J{\o}rgen Mortensen, Mikkel Strange, Elisabeth Wruss, and
+  Matthias Scheffler.
+\newblock Numerical quality control for {DFT}-based materials databases.
+\newblock \emph{npj Computational Materials}, 8:\penalty0 69, 2022.
+\newblock \doi{10.1038/s41524-022-00744-4}.
+\newblock URL \url{https://arxiv.org/abs/2008.10402}.
+
+\bibitem[Chmiela et~al.(2017)Chmiela, Tkatchenko, Sauceda, Poltavsky,
+  Sch{\"u}tt, and M{\"u}ller]{chmiela2017}
+Stefan Chmiela, Alexandre Tkatchenko, Huziel~E. Sauceda, Igor Poltavsky,
+  Kristof~T. Sch{\"u}tt, and Klaus-Robert M{\"u}ller.
+\newblock Machine learning of accurate energy-conserving molecular force
+  fields.
+\newblock \emph{Science Advances}, 3\penalty0 (5):\penalty0 e1603015, 2017.
+\newblock \doi{10.1126/sciadv.1603015}.
+
+\bibitem[Donoho et~al.(2017)Donoho, Gavish, and Johnstone]{donoho2017}
+David~L. Donoho, Matan Gavish, and Iain~M. Johnstone.
+\newblock Optimal shrinkage of eigenvalues in the spiked covariance model.
+\newblock arXiv:1311.0851, 2017.
+\newblock URL \url{https://arxiv.org/abs/1311.0851}.
+\newblock Version 3.
+
+\bibitem[Geurts et~al.(2006)Geurts, Ernst, and Wehenkel]{geurts2006}
+Pierre Geurts, Damien Ernst, and Louis Wehenkel.
+\newblock Extremely randomized trees.
+\newblock \emph{Machine Learning}, 63:\penalty0 3--42, 2006.
+\newblock \doi{10.1007/s10994-006-6226-1}.
+
+\bibitem[Kuryla et~al.(2025)Kuryla, Berger, Cs{\'a}nyi, and
+  Michaelides]{kuryla2025}
+Domantas Kuryla, Fabian Berger, G{\'a}bor Cs{\'a}nyi, and Angelos Michaelides.
+\newblock How accurate are {DFT} forces? unexpectedly large uncertainties in
+  molecular datasets.
+\newblock arXiv:2510.19774, 2025.
+\newblock URL \url{https://arxiv.org/abs/2510.19774}.
+
+\bibitem[Mahshook and Banerjee(2026)]{mahshook2026}
+Mohammed Mahshook and Rudra Banerjee.
+\newblock Auditing machine-learning models and their training data with
+  explainability and first-principles verification: Application to spin hall
+  conductivity.
+\newblock arXiv:2607.09910, 2026.
+\newblock URL \url{https://arxiv.org/html/2607.09910}.
+
+\bibitem[Marchenko and Pastur(1967)]{marchenko1967}
+V.~A. Marchenko and L.~A. Pastur.
+\newblock Distribution of eigenvalues for some sets of random matrices.
+\newblock \emph{Mathematics of the USSR-Sbornik}, 1\penalty0 (4):\penalty0
+  457--483, 1967.
+\newblock \doi{10.1070/SM1967v001n04ABEH001994}.
+
+\end{thebibliography}

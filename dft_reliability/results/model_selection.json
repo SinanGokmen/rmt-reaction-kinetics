@@ -1,0 +1,302 @@
+[
+  {
+    "dataset": "aimnet2",
+    "fold": 0,
+    "method": "ridge",
+    "parameter": "alpha=1e-06",
+    "calibration": 597,
+    "validation": 202,
+    "test": 201,
+    "validation_sse": 0.2606044268896098
+  },
+  {
+    "dataset": "aimnet2",
+    "fold": 0,
+    "method": "truncate",
+    "parameter": "cut=1e-06",
+    "calibration": 597,
+    "validation": 202,
+    "test": 201,
+    "validation_sse": 0.2606044128949617
+  },
+  {
+    "dataset": "aimnet2",
+    "fold": 0,
+    "method": "mp_bulk",
+    "parameter": "blend=0.25;floor=0.1",
+    "calibration": 597,
+    "validation": 202,
+    "test": 201,
+    "validation_sse": 0.26077404344237576
+  },
+  {
+    "dataset": "aimnet2",
+    "fold": 1,
+    "method": "ridge",
+    "parameter": "alpha=0.001",
+    "calibration": 574,
+    "validation": 224,
+    "test": 202,
+    "validation_sse": 0.2741862080231857
+  },
+  {
+    "dataset": "aimnet2",
+    "fold": 1,
+    "method": "truncate",
+    "parameter": "cut=1e-06",
+    "calibration": 574,
+    "validation": 224,
+    "test": 202,
+    "validation_sse": 0.2742160035770574
+  },
+  {
+    "dataset": "aimnet2",
+    "fold": 1,
+    "method": "mp_bulk",
+    "parameter": "blend=0.25;floor=1e-06",
+    "calibration": 574,
+    "validation": 224,
+    "test": 202,
+    "validation_sse": 0.2741798024830393
+  },
+  {
+    "dataset": "aimnet2",
+    "fold": 2,
+    "method": "ridge",
+    "parameter": "alpha=0.1",
+    "calibration": 607,
+    "validation": 169,
+    "test": 224,
+    "validation_sse": 0.21300860391839974
+  },
+  {
+    "dataset": "aimnet2",
+    "fold": 2,
+    "method": "truncate",
+    "parameter": "cut=0.01",
+    "calibration": 607,
+    "validation": 169,
+    "test": 224,
+    "validation_sse": 0.21295613767128907
+  },
+  {
+    "dataset": "aimnet2",
+    "fold": 2,
+    "method": "mp_bulk",
+    "parameter": "blend=0.75;floor=0.1",
+    "calibration": 607,
+    "validation": 169,
+    "test": 224,
+    "validation_sse": 0.21299824055305727
+  },
+  {
+    "dataset": "aimnet2",
+    "fold": 3,
+    "method": "ridge",
+    "parameter": "alpha=0.01",
+    "calibration": 627,
+    "validation": 204,
+    "test": 169,
+    "validation_sse": 0.2622668292142721
+  },
+  {
+    "dataset": "aimnet2",
+    "fold": 3,
+    "method": "truncate",
+    "parameter": "cut=1e-06",
+    "calibration": 627,
+    "validation": 204,
+    "test": 169,
+    "validation_sse": 0.2624244355179937
+  },
+  {
+    "dataset": "aimnet2",
+    "fold": 3,
+    "method": "mp_bulk",
+    "parameter": "blend=0.25;floor=0.1",
+    "calibration": 627,
+    "validation": 204,
+    "test": 169,
+    "validation_sse": 0.2623907841080483
+  },
+  {
+    "dataset": "aimnet2",
+    "fold": 4,
+    "method": "ridge",
+    "parameter": "alpha=0.1",
+    "calibration": 595,
+    "validation": 201,
+    "test": 204,
+    "validation_sse": 0.2658386853348678
+  },
+  {
+    "dataset": "aimnet2",
+    "fold": 4,
+    "method": "truncate",
+    "parameter": "cut=0.01",
+    "calibration": 595,
+    "validation": 201,
+    "test": 204,
+    "validation_sse": 0.2655223264542429
+  },
+  {
+    "dataset": "aimnet2",
+    "fold": 4,
+    "method": "mp_bulk",
+    "parameter": "blend=1;floor=0.1",
+    "calibration": 595,
+    "validation": 201,
+    "test": 204,
+    "validation_sse": 0.265556063561372
+  },
+  {
+    "dataset": "transition1x",
+    "fold": 0,
+    "method": "ridge",
+    "parameter": "alpha=1",
+    "calibration": 621,
+    "validation": 213,
+    "test": 166,
+    "validation_sse": 29.414799011095415
+  },
+  {
+    "dataset": "transition1x",
+    "fold": 0,
+    "method": "truncate",
+    "parameter": "cut=0.01",
+    "calibration": 621,
+    "validation": 213,
+    "test": 166,
+    "validation_sse": 29.415097347433523
+  },
+  {
+    "dataset": "transition1x",
+    "fold": 0,
+    "method": "mp_bulk",
+    "parameter": "blend=0.25;floor=1",
+    "calibration": 621,
+    "validation": 213,
+    "test": 166,
+    "validation_sse": 29.4147992044098
+  },
+  {
+    "dataset": "transition1x",
+    "fold": 1,
+    "method": "ridge",
+    "parameter": "alpha=0.0001",
+    "calibration": 596,
+    "validation": 191,
+    "test": 213,
+    "validation_sse": 0.12059991606554402
+  },
+  {
+    "dataset": "transition1x",
+    "fold": 1,
+    "method": "truncate",
+    "parameter": "cut=1e-06",
+    "calibration": 596,
+    "validation": 191,
+    "test": 213,
+    "validation_sse": 0.12060097047164074
+  },
+  {
+    "dataset": "transition1x",
+    "fold": 1,
+    "method": "mp_bulk",
+    "parameter": "blend=0.25;floor=0.1",
+    "calibration": 596,
+    "validation": 191,
+    "test": 213,
+    "validation_sse": 0.12068020827904632
+  },
+  {
+    "dataset": "transition1x",
+    "fold": 2,
+    "method": "ridge",
+    "parameter": "alpha=10",
+    "calibration": 655,
+    "validation": 154,
+    "test": 191,
+    "validation_sse": 0.09130368558543062
+  },
+  {
+    "dataset": "transition1x",
+    "fold": 2,
+    "method": "truncate",
+    "parameter": "zero",
+    "calibration": 655,
+    "validation": 154,
+    "test": 191,
+    "validation_sse": 0.09241833618217002
+  },
+  {
+    "dataset": "transition1x",
+    "fold": 2,
+    "method": "mp_bulk",
+    "parameter": "blend=0.25;floor=1",
+    "calibration": 655,
+    "validation": 154,
+    "test": 191,
+    "validation_sse": 0.09166779917926016
+  },
+  {
+    "dataset": "transition1x",
+    "fold": 3,
+    "method": "ridge",
+    "parameter": "alpha=10",
+    "calibration": 570,
+    "validation": 276,
+    "test": 154,
+    "validation_sse": 0.18065154086096863
+  },
+  {
+    "dataset": "transition1x",
+    "fold": 3,
+    "method": "truncate",
+    "parameter": "zero",
+    "calibration": 570,
+    "validation": 276,
+    "test": 154,
+    "validation_sse": 0.1820180443148509
+  },
+  {
+    "dataset": "transition1x",
+    "fold": 3,
+    "method": "mp_bulk",
+    "parameter": "zero",
+    "calibration": 570,
+    "validation": 276,
+    "test": 154,
+    "validation_sse": 0.1820180443148509
+  },
+  {
+    "dataset": "transition1x",
+    "fold": 4,
+    "method": "ridge",
+    "parameter": "alpha=10",
+    "calibration": 558,
+    "validation": 166,
+    "test": 276,
+    "validation_sse": 0.10432369604154232
+  },
+  {
+    "dataset": "transition1x",
+    "fold": 4,
+    "method": "truncate",
+    "parameter": "zero",
+    "calibration": 558,
+    "validation": 166,
+    "test": 276,
+    "validation_sse": 0.10532305443810801
+  },
+  {
+    "dataset": "transition1x",
+    "fold": 4,
+    "method": "mp_bulk",
+    "parameter": "zero",
+    "calibration": 558,
+    "validation": 166,
+    "test": 276,
+    "validation_sse": 0.10532305443810801
+  }
+]

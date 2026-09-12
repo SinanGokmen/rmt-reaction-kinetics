@@ -1,0 +1,35 @@
+[
+  {
+    "path": "results/denoising_oof.csv",
+    "sha256": "8385b5ed8140a4dac81b47462a2246400233c1fd9a6cc8f9feaaaacf14cf6abb",
+    "parts": [
+      "results/denoising_oof.csv.gz.part000"
+    ]
+  },
+  {
+    "path": "results/reliability_predictions.csv",
+    "sha256": "4aefe833b59024dabd9fd790199d1ad85c35773a32a5d27066fed42bb21547df",
+    "parts": [
+      "results/reliability_predictions.csv.gz.part000"
+    ]
+  },
+  {
+    "path": "results/small_seed_scores.csv",
+    "sha256": "ce4e4ec753aacf0c97050e489a970925f737f18c67d2f9363f4bf7c126dad6ee",
+    "parts": [
+      "results/small_seed_scores.csv.gz.part000",
+      "results/small_seed_scores.csv.gz.part001",
+      "results/small_seed_scores.csv.gz.part002",
+      "results/small_seed_scores.csv.gz.part003",
+      "results/small_seed_scores.csv.gz.part004",
+      "results/small_seed_scores.csv.gz.part005"
+    ]
+  },
+  {
+    "path": "results/small_seed_splits.json",
+    "sha256": "adbb3ea7f91e453945df39e05e8137e82a1f6e728743cf8cd322fc00614a0656",
+    "parts": [
+      "results/small_seed_splits.json.gz.part000"
+    ]
+  }
+]

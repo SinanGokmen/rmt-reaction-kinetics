@@ -1,0 +1,8 @@
+{
+  "reference_feature_leakage": 0.0,
+  "rigid_transform_feature_error": 5.6288307348495437e-14,
+  "reconstructed_recall_error": 0.0,
+  "prediction_rows": 80000,
+  "metric_rows": 4760,
+  "unique_configurations": 2000
+}

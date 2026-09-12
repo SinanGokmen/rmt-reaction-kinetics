@@ -1,0 +1,9 @@
+{
+  "metric_reconstruction_max_error": 1.1102230246251565e-16,
+  "split_count": 250,
+  "score_rows": 1000000,
+  "metric_rows": 2250,
+  "nested_seed_sequences": 50,
+  "formula_disjoint": true,
+  "total_budget": 280
+}

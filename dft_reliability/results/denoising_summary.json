@@ -1,0 +1,114 @@
+[
+  {
+    "dataset": "aimnet2",
+    "method": "element_weighted",
+    "rmse_mev_A": 4.4800104336523345,
+    "tangent_rmse_mev_A": 4.47995619363034,
+    "median_frame_rmse_mev_A": 4.133263901056376,
+    "p95_frame_rmse_mev_A": 6.773963066575105
+  },
+  {
+    "dataset": "aimnet2",
+    "method": "mp_bulk",
+    "rmse_mev_A": 4.4909142183855195,
+    "tangent_rmse_mev_A": 4.490860110058021,
+    "median_frame_rmse_mev_A": 4.128886341579448,
+    "p95_frame_rmse_mev_A": 6.69220555834978
+  },
+  {
+    "dataset": "aimnet2",
+    "method": "raw",
+    "rmse_mev_A": 4.797909760601634,
+    "tangent_rmse_mev_A": 4.609113659207999,
+    "median_frame_rmse_mev_A": 4.34588582309416,
+    "p95_frame_rmse_mev_A": 7.753671060737057
+  },
+  {
+    "dataset": "aimnet2",
+    "method": "ridge",
+    "rmse_mev_A": 4.4939730959145,
+    "tangent_rmse_mev_A": 4.493919024416936,
+    "median_frame_rmse_mev_A": 4.128690720944746,
+    "p95_frame_rmse_mev_A": 6.741272277977083
+  },
+  {
+    "dataset": "aimnet2",
+    "method": "rigid",
+    "rmse_mev_A": 4.6091663793233435,
+    "tangent_rmse_mev_A": 4.609113659207999,
+    "median_frame_rmse_mev_A": 4.233771975065628,
+    "p95_frame_rmse_mev_A": 7.059144598740038
+  },
+  {
+    "dataset": "aimnet2",
+    "method": "translation",
+    "rmse_mev_A": 4.714333471262427,
+    "tangent_rmse_mev_A": 4.609113659207997,
+    "median_frame_rmse_mev_A": 4.298624188224275,
+    "p95_frame_rmse_mev_A": 7.42598290348198
+  },
+  {
+    "dataset": "aimnet2",
+    "method": "truncate",
+    "rmse_mev_A": 4.495070832363784,
+    "tangent_rmse_mev_A": 4.4950167740711215,
+    "median_frame_rmse_mev_A": 4.131423842500193,
+    "p95_frame_rmse_mev_A": 6.782834974570808
+  },
+  {
+    "dataset": "transition1x",
+    "method": "element_weighted",
+    "rmse_mev_A": 26.88723912929174,
+    "tangent_rmse_mev_A": 26.88718938881058,
+    "median_frame_rmse_mev_A": 3.8058563719001546,
+    "p95_frame_rmse_mev_A": 5.374738069137364
+  },
+  {
+    "dataset": "transition1x",
+    "method": "mp_bulk",
+    "rmse_mev_A": 26.883288485717806,
+    "tangent_rmse_mev_A": 26.883238737927005,
+    "median_frame_rmse_mev_A": 3.723886916271899,
+    "p95_frame_rmse_mev_A": 5.386429883592082
+  },
+  {
+    "dataset": "transition1x",
+    "method": "raw",
+    "rmse_mev_A": 26.900654314502816,
+    "tangent_rmse_mev_A": 26.885232270350144,
+    "median_frame_rmse_mev_A": 3.8608099183467015,
+    "p95_frame_rmse_mev_A": 5.483612785393964
+  },
+  {
+    "dataset": "transition1x",
+    "method": "ridge",
+    "rmse_mev_A": 26.883623519063864,
+    "tangent_rmse_mev_A": 26.883573771893037,
+    "median_frame_rmse_mev_A": 3.711352246624541,
+    "p95_frame_rmse_mev_A": 5.362854876598571
+  },
+  {
+    "dataset": "transition1x",
+    "method": "rigid",
+    "rmse_mev_A": 26.885282014452166,
+    "tangent_rmse_mev_A": 26.885232270350144,
+    "median_frame_rmse_mev_A": 3.750883227319048,
+    "p95_frame_rmse_mev_A": 5.402039972450149
+  },
+  {
+    "dataset": "transition1x",
+    "method": "translation",
+    "rmse_mev_A": 26.894217174788277,
+    "tangent_rmse_mev_A": 26.885232270350144,
+    "median_frame_rmse_mev_A": 3.814996195831528,
+    "p95_frame_rmse_mev_A": 5.4467741650023065
+  },
+  {
+    "dataset": "transition1x",
+    "method": "truncate",
+    "rmse_mev_A": 26.885459758378314,
+    "tangent_rmse_mev_A": 26.885410014605156,
+    "median_frame_rmse_mev_A": 3.7192083863773315,
+    "p95_frame_rmse_mev_A": 5.400529617089726
+  }
+]

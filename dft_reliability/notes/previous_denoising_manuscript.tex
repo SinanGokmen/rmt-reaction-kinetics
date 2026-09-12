@@ -1,0 +1,426 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,microtype,amsmath,amssymb,amsthm,booktabs,graphicx,natbib}
+\usepackage[colorlinks=true,allcolors=blue,breaklinks=true]{hyperref}
+\usepackage{url}
+\newtheorem{proposition}{Proposition}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\norm}[1]{\left\lVert #1\right\rVert}
+\title{When does force-label denoising change an invariant potential?\\[3pt]
+\large Symmetry, covariance and paired-DFT evidence}
+\author{Sinan G\"okmen\\Department of Chemistry, Istanbul Technical University\\
+\texttt{gokmens23@itu.edu.tr}}
+\date{11 September 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Removing numerical error from force labels is a plausible way to improve interatomic
+potentials, but a decrease in label error need not change learning. For an invariant
+energy model trained with squared force loss, we show that orthogonal removal of
+net force and torque changes the objective only by a parameter-independent constant.
+Useful correction must reach the complementary, symmetry-allowed subspace. A
+conditional-noise formulation identifies the cross-covariance that enables this
+correction and gives an exact excess-risk identity for its estimation. We examine
+these ideas on 2,000 publicly available paired DFT configurations using molecular-
+formula-grouped evaluation. On the AIMNet2 sample, element-weighted constraint
+correction reduces force RMSE from 4.7979 to 4.4800 meV/\AA; a spectral bulk-pooling
+heuristic reaches 4.4909 meV/\AA. The latter does not establish superiority over ridge
+and is inferior to the element-weighted baseline. On Transition1x, the tested methods
+make little difference to aggregate error. A separate Gaussian experiment illustrates
+when spiked-covariance shrinkage can help, with an explicitly known noise floor.
+These results identify a necessary distinction between symmetry repair, useful label
+correction and improved model prediction; the last is not established here.
+\end{abstract}
+
+\section{The question behind force denoising}
+Force labels influence both the fitting and assessment of machine-learned interatomic
+potentials. Paired recalculations by \citet{kuryla2025} provide an opportunity to study
+numerical force discrepancies directly. However, a model cannot learn every component
+of a force vector. In particular, derivatives of a translation- and rotation-invariant
+energy obey zero-net-force and zero-net-torque conditions. A preprocessing method can
+therefore reduce a visible label discrepancy while leaving every training gradient
+unchanged.
+
+This observation motivates three distinct questions: which force errors are invisible
+to the chosen learner, whether observable constraint violations predict the remaining
+error, and how covariance-estimation error affects such prediction. The calculations
+below use elementary orthogonal projection and linear prediction; neither mathematical
+tool is claimed as new. The contribution investigated here is their joint use as an
+evaluation criterion for force-label denoising, accompanied by a reproducible paired-data
+comparison. Priority for this formulation has not been established by an exhaustive
+literature review.
+
+Learning conservative forces directly from an energy-related function space is an
+established strategy \citep{chmiela2017}. Coordinate-denoising pretraining
+\citep{wang2023} and weak supervision using energy--force relations
+\citep{takamoto2024} address related learning problems. The present intervention acts
+on numerical force labels; it does not perturb molecular coordinates or infer a
+binding pose. Random matrix theory (RMT) is relevant to estimating high-dimensional
+covariance spectra \citep{marchenko1967,donoho2017}, while covariance shrinkage also
+admits strong nonspectral baselines \citep{chen2009}. Its utility must be assessed on
+the resulting correction, rather than inferred from a smaller covariance error alone.
+
+\section{An exact limitation of symmetry projection}
+Consider an isolated molecule with positions $R=(r_1,\ldots,r_N)$ and a differentiable
+energy $E_\theta(R)$ invariant under translations and rotations. Stack its forces in
+$f_\theta=-\nabla_R E_\theta\in\R^{3N}$. Define the constraint operator
+\begin{equation}
+ A_R f=\begin{pmatrix}\sum_i f_i\\\sum_i (r_i-\bar r)\times f_i\end{pmatrix},
+ \qquad \bar r=N^{-1}\sum_i r_i.
+\end{equation}
+Differentiating the two invariances yields $A_R f_\theta=0$. Let $U_R$ have orthonormal
+columns spanning $\operatorname{range}(A_R^T)$, and write
+\begin{equation}
+ Q_R=U_RU_R^T,\qquad P_R=I-Q_R.
+\end{equation}
+These definitions also apply to linear or degenerate geometries if the actual rank
+is used. The word ``tangent'' below abbreviates the symmetry-allowed subspace
+$\ker A_R$; it does not assert that every vector field taking values there is
+globally conservative.
+
+\begin{proposition}[Projection does not change squared-loss learning]
+For any fixed force label $y$,
+\begin{equation}\label{eq:noop}
+ \norm{f_\theta-y}^2=\norm{f_\theta-P_Ry}^2+\norm{Q_Ry}^2.
+\end{equation}
+Consequently, replacing $y$ by $P_Ry$ leaves parameter gradients, Hessians and the
+set of minimizers unchanged for a squared force loss with fixed scalar weights per
+configuration. The conclusion remains valid if the same energy loss and parameter
+regularizer are added to both objectives.
+\end{proposition}
+\begin{proof}
+The vector $f_\theta-P_Ry$ belongs to $\ker A_R$, and $Q_Ry$ is orthogonal to that
+subspace. Their squared norms add. The last term in \eqref{eq:noop} is independent
+of $\theta$.
+\end{proof}
+
+This is a statement about the objective, not every possible training program.
+Absolute-loss stopping rules, label-dependent sampling, robust component losses,
+learned loss weights and unequal atomwise metrics may react differently. The
+statement also requires the model itself to obey the invariances. Equivariance of
+a direct force predictor alone does not guarantee zero net force or torque.
+
+An additional restriction appears for any linear conservative model $f_\theta=J\theta$.
+For ridge fitting with $H=J^TJ+\lambda I$, replacing targets $y$ by $y-d$ changes
+the fitted coefficients by
+\begin{equation}\label{eq:response}
+ \widehat\theta_{y-d}-\widehat\theta_y=-H^{-1}J^Td.
+\end{equation}
+Thus $P_Rd\ne0$ is necessary to escape the symmetry limitation but is not sufficient
+to affect a particular learner: a correction may still be orthogonal to its design
+space. Nor does a nonzero change in parameters guarantee lower test error.
+
+\section{A covariance condition for useful correction}
+For this section fix a geometry and an orthonormal complementary basis $V_R$, with
+$V_RV_R^T=P_R$. Suppose an ideal reference force $f_*$ satisfies $A_Rf_*=0$ and
+$y=f_*+\epsilon$. Assume conditional zero-mean noise with covariance $\Sigma$;
+all expectations may be interpreted conditional on the geometry and acquisition
+settings. Define
+\begin{equation}
+ \epsilon_t=V_R^T\epsilon,\quad \epsilon_n=U_R^T\epsilon,
+ \qquad
+ \begin{pmatrix}\Sigma_{tt}&\Sigma_{tn}\\\Sigma_{nt}&\Sigma_{nn}\end{pmatrix}
+ =\begin{pmatrix}V_R^T\\U_R^T\end{pmatrix}\Sigma(V_R,U_R),
+\end{equation}
+and assume $\Sigma_{nn}\succ0$. Constraint violations reveal
+$z=U_R^Ty=\epsilon_n$. A linear corrected label is
+\begin{equation}\label{eq:correct}
+ \widetilde f_B=P_Ry-V_RBz.
+\end{equation}
+This uses a measured error indicator to correct an error component that otherwise
+survives symmetry projection.
+
+\begin{proposition}[Predictable error and estimation penalty]
+Among deterministic linear maps $B$, the minimum expected squared error in
+\eqref{eq:correct} is attained at $B_* =\Sigma_{tn}\Sigma_{nn}^{-1}$. Writing
+$\mathcal R(B)=\E\norm{\epsilon_t-B\epsilon_n}^2$, one has
+\begin{align}
+ \mathcal R(B_*)&=\tr\bigl(\Sigma_{tt}-\Sigma_{tn}\Sigma_{nn}^{-1}\Sigma_{nt}\bigr),\label{eq:oracle}\\
+ \mathcal R(B)-\mathcal R(B_*)&=
+ \norm{(B-B_*)\Sigma_{nn}^{1/2}}_F^2.\label{eq:risk}
+\end{align}
+The population gain over orthogonal projection is
+\begin{equation}\label{eq:gain}
+ \mathcal R(0)-\mathcal R(B_*)=
+ \norm{\Sigma_{tn}\Sigma_{nn}^{-1/2}}_F^2.
+\end{equation}
+\end{proposition}
+\begin{proof}
+Expand the quadratic expectation as
+$\tr\Sigma_{tt}-2\tr(B\Sigma_{nt})+\tr(B\Sigma_{nn}B^T)$ and complete the square.
+Positive definiteness gives uniqueness. Substitution of $B=0$ gives \eqref{eq:gain}.
+\end{proof}
+
+For a random estimator $\widehat B$ learned from independent calibration data,
+\eqref{eq:risk} holds conditional on that estimate, and its expectation adds the
+calibration penalty. If joint Gaussianity holds, $B_*z$ is also the conditional mean
+of $\epsilon_t$ given $z$, hence optimal among all square-integrable predictors of
+that indicator. Without Gaussianity only the linear optimality claim is made.
+With systematic conditional bias, the corresponding conditional means must also
+be estimated; numerical DFT discrepancies need not be zero-mean Gaussian noise.
+
+Two consequences are immediate. If $\Sigma_{tn}=0$, no linear correction based
+only on constraint violations improves population risk. If the cross-covariance is
+nonzero, its predictable gain must exceed the finite-calibration penalty. A large
+force-error variance or a large spectral spike by itself does not imply that gain.
+
+For a plug-in estimator $\widehat B=\widehat\Sigma_{tn}\widehat\Sigma_{nn}^{-1}$,
+suppose both normal-block minimum eigenvalues exceed $a>0$. Then
+\begin{equation}\label{eq:bound}
+ \norm{\widehat B-B_*}_F\le
+ a^{-1}\norm{\widehat\Sigma_{tn}-\Sigma_{tn}}_F+
+ a^{-2}\norm{\Sigma_{tn}}_2\norm{\widehat\Sigma_{nn}-\Sigma_{nn}}_F.
+\end{equation}
+This follows by adding and subtracting
+$\Sigma_{tn}\widehat\Sigma_{nn}^{-1}$ and using the inverse-difference identity.
+Together with \eqref{eq:risk}, it exposes both cross-block error and instability of
+the normal-block inverse. Shrinking unrelated tangent variances need not help.
+
+In Cartesian coordinates the population linear correction can equivalently be
+written
+\begin{equation}\label{eq:oblique}
+ \widetilde f=y-\Sigma U_R(U_R^T\Sigma U_R)^{-1}U_R^Ty.
+\end{equation}
+It satisfies the constraints. For $\Sigma=\sigma^2I$, it reduces to $P_Ry$ and has
+the learning limitation of Proposition 1. The map in \eqref{eq:oblique} is a
+classical covariance-weighted constraint correction, not a newly invented estimator.
+
+\section{A paired-DFT pilot}
+\subsection{Data and separation of validation from test}
+We use the public paired-force files accompanying \citet{kuryla2025}, pinned to
+commit
+\begin{center}\small\texttt{322a41229f7707a58626a7c03ce850d67920fad0}.\end{center}
+Their tightly recomputed
+ORCA forces are operational references, not exact electronic-structure truth.
+The AIMNet2 and Transition1x files each contain 1,000 configurations; direct use
+of their force columns reproduces the reported force RMSDs. These calculations
+compare numerical setups at a fixed nominal level of theory; they do not establish
+removal of exchange-correlation functional bias.
+
+An audit of two additional upstream files did not reproduce the stated comparisons
+under the attempted unit and dispersion conventions. ANI-1x and SPICE are therefore
+excluded from fitted experiments. Appendix A records the unresolved checks without
+attributing their cause to the source publication.
+
+Entire molecular formulas are assigned deterministically to five outer folds using
+a SHA-256 hash. For each fold, one group is test, the next is validation, and the
+remaining three are calibration. This produces one out-of-fold prediction per frame.
+There are 977 formula groups in AIMNet2 and 122 in Transition1x. Calibration sets
+contain 574--627 and 558--655 configurations, respectively. Shared fixed-composition
+conformers cannot cross partitions, but this is not a scaffold split or a guaranteed
+reaction-family split. All configurations, including large-error outliers, are kept.
+
+\subsection{Corrections and baselines}
+The untrained baselines are raw forces, removal of the mean force, and orthogonal
+force/torque projection. An element-weighted baseline uses \eqref{eq:oblique} with
+a diagonal covariance whose per-atom Cartesian variance is estimated from that
+element's calibration discrepancies. Unseen elements use the pooled calibration
+variance. A small floor prevents zero variance.
+
+The learned corrections use an equivariant design $X_R(y)\in\R^{3N\times48}$.
+Its columns are the projected products of an element indicator, an invariant
+environment scalar and a vector marker. The eight element channels are H, C, N,
+O, F, S, Cl and other. The scalars are $1$, $s_i/(1+s_i)$ and $c_i/(1+c_i)$, where
+$s_i=\norm{r_i-\bar r}$ in \AA\ and
+$c_i=\sum_{j\ne i}\exp(-\norm{r_i-r_j}^2/(4\,\mathring{\mathrm A}^{2}))$.
+The markers are the translational component of $y$ and the remaining rotational
+component of $Q_Ry$. Each resulting column is projected by $P_R$.
+The prediction is $P_Ry-X_R(y)\beta$, where $\beta$ is fitted to
+$P_R(y-f_{\mathrm{ref}})$ using calibration frames only. These corrected labels
+obey the constraints but need not form a conservative field across geometries.
+
+We compare ridge regression, spectral truncation and an MP-inspired bulk-pooling
+heuristic on the diagonally normalized feature Gram matrix. Each method selects
+its regularization using validation MSE and includes zero correction as a candidate.
+For the heuristic the nominal edge is $(1+\sqrt{p/m})^2$, with $p$ active columns
+and $m$ calibration configurations. Eigenvalues below the edge are partly pooled
+to their mean; blending and a ridge floor are selected on validation data.
+Atomic components are dependent and the features are structured, so this Gram
+matrix is not demonstrated to satisfy a Wishart or isotropic MP model. The edge
+is explicitly a heuristic here, and is different from the justified Gaussian setup
+in Section 5. No asymptotic optimality is asserted for the molecular correction.
+
+\subsection{Results}
+\begin{table}[t]
+\centering\small
+\input{results_table.tex}
+\caption{Out-of-fold force-label discrepancies in meV/\AA. The pooled metric weights
+Cartesian components equally. No trained potential prediction is included in this table.}
+\label{tab:real}
+\end{table}
+
+On AIMNet2, 92.28\% of the squared discrepancy lies in the symmetry-allowed
+subspace; on Transition1x, the fraction is 99.89\%. The tight references have small
+but nonzero forbidden components: RMS values are 0.0220 and 0.0517 meV/\AA,
+respectively. The ideal-reference premise of Section 3 is therefore approximate
+for the actual paired data.
+
+Table~\ref{tab:real} separates label improvement from downstream learning.
+Element weighting lowers AIMNet2 RMSE by 6.63\% relative to raw labels, and by
+2.80\% relative to orthogonal projection. The MP heuristic improves on orthogonal
+projection by 0.1183 meV/\AA. A paired formula-cluster bootstrap with 2,000 draws
+gives a 95\% interval of $[-0.1329,-0.1033]$ meV/\AA\ for that difference.
+However, its difference from ridge is $-0.0031$ with interval
+$[-0.0069,0.0002]$, and its difference from element weighting is $+0.0109$ with
+interval $[0.0046,0.0172]$. Thus the experiment does not establish a special RMT
+advantage; the simpler element-weighted method has the lower aggregate error.
+
+\begin{figure}[t]
+\centering\includegraphics[width=\linewidth]{figures/real_dft_comparison.pdf}
+\caption{Force-label RMSE for the seven methods. Axes begin at zero. Improvements
+on AIMNet2 are modest; aggregate Transition1x error changes little.}
+\end{figure}
+
+On Transition1x, the MP heuristic changes pooled RMSE by only $-0.0020$ meV/\AA\
+relative to orthogonal projection, with interval $[-0.0311,0.0012]$. The large gap
+between median-frame and pooled error is consistent with strong tail influence.
+Those observations are retained in the primary endpoint. The bootstrap describes
+resampling of the existing out-of-fold predictions conditional on the fitted
+models; it does not refit every model or include all uncertainty from choosing
+these dataset samples and feature families.
+
+\section{Controlled covariance mechanism}
+To illustrate the exact risk decomposition separately from the molecular comparison,
+we specify a Gaussian calibration experiment with $p=24$ components and six
+normal components. This illustration was designed after the real-data comparison;
+it is not a preregistered replication or independent evidence of molecular gains.
+The three covariances are $I$, $I+10ww^T$ with
+$w=(e_1+e_7)/\sqrt2$, and $I+10e_7e_7^T$. They represent no correlation, a
+cross-subspace spike and a tangent-only spike, respectively.
+
+For $m\in\{16,32,64,128\}$, we draw 200 independent calibration sets from each
+covariance. We compare orthogonal projection, the empirical covariance correction,
+OAS \citep{chen2009}, a spiked-model spectral shrinker \citep{donoho2017}, and the
+population oracle. Expected test risk is evaluated analytically from the known
+covariance using \eqref{eq:risk}; no sampled test noise is needed. The spectral
+method is supplied the true isotropic noise floor of one. This is a substantial
+oracle advantage and is not available in the molecular experiment.
+
+\begin{figure}[t]
+\centering\includegraphics[width=\linewidth]{figures/synthetic_risk.pdf}
+\caption{Expected tangent error in three Gaussian models. Curves average 200
+independent calibrations; bands are 1.96 standard errors across calibrations.
+The spiked spectral estimator receives the known noise floor. A tangent-only
+spike carries no normal-to-tangent prediction opportunity despite its large eigenvalue.}
+\label{fig:synthetic}
+\end{figure}
+
+At $m=32$, the cross-subspace example has per-tangent-component expected MSE
+1.2778 for projection, 1.2868 for empirical covariance, 1.1346 for OAS,
+1.0761 for the known-floor spectral estimator and 1.0463 for the population oracle.
+In contrast, for the tangent-only spike, orthogonal projection and the oracle
+both achieve 1.5556; the spectral estimator yields 1.6122. The latter estimator
+cannot create information absent from the cross-covariance. These examples show
+both a setting where spectral regularization is useful and one where denoising
+the covariance does not improve constraint-based force correction.
+
+\section{Implications and limits}
+The combination of Propositions 1 and 2 supplies a concrete criterion for a denoising
+study: report how much error is removed from the component visible to the learner,
+and compare the calibration penalty with the predictable gain. A decrease in net
+force is insufficient evidence. A decrease in covariance Frobenius error is also
+insufficient unless it improves the relevant conditional map or final prediction.
+
+The molecular pilot supports modest label correction on one dataset, not a more
+accurate trained potential. It uses hundreds of tightly recomputed calibration
+and validation labels. Any claim of data or compute efficiency must charge those
+labels to the method and compare against spending the same budget directly on
+potential training or label replacement. An appropriate subsequent test would
+hold model architecture and total reference budget fixed, tune all methods on
+independent validation data, and evaluate force and energy prediction on tight
+references from unseen molecules. Multiple training seeds and learning curves
+would be needed before claiming a smaller model or fewer labels suffice.
+
+These data contain molecular configurations, not protein--ligand binding free
+energies. The correction does not establish improved docking, affinity ranking,
+kinetics or drug discovery. Extending it to such endpoints would require
+corresponding experiments and treatment of sampling, solvent and systematic
+electronic-structure error. Coordinate noise, force-label error and genuine
+thermal variation should not be merged into a single noise model.
+
+\section{Conclusion}
+Orthogonal force/torque repair is exactly invisible to squared-loss training of an
+invariant energy model. Useful constraint-informed correction requires predictable
+error inside the symmetry-allowed subspace, and its success depends on estimating
+the relevant cross-covariance. Our paired-data experiment finds modest gains on
+AIMNet2 but no advantage of the tested RMT-inspired method over a simpler
+element-weighted baseline. The controlled Gaussian calculations delimit a mechanism
+for spectral improvement without establishing its dominance in computational
+chemistry. Downstream predictive and efficiency claims remain open.
+
+\section*{Data and code}
+The original paired data are available at
+\url{https://github.com/water-ice-group/datasets_dft_accuracy}.
+The accompanying research archive contains the analysis scripts, result tables,
+the recorded experiment protocol, immutable download URLs and SHA-256/Git-blob
+checksums. Source data are retrieved with the downloader rather than repackaged.
+No new electronic-structure calculations were performed. A public release of
+this analysis code has not yet been made.
+
+\section*{Generative AI assistance}
+ChatGPT/Codex was used extensively in developing the mathematical arguments,
+writing and checking the analysis code, running the numerical experiments,
+searching the literature, and preparing the text and figures. Numerical results
+were generated by the supplied scripts. This disclosure does not represent an
+independent verification of the scientific claims.
+
+\appendix
+\section{Audit and implementation details}
+\paragraph{Unresolved upstream comparisons.}
+Using the upstream ANI conversion of Hartree/\AA\ to eV/\AA\ on the available
+\texttt{ani\_1x\_tz\_configs.xyz} gives 173.86 meV/\AA\ and near-zero original net
+forces; it does not reproduce the reported 33.2 meV/\AA\ comparison. The available
+SPICE file contains 998 configurations, a gradient-sign convention and a separate
+D3 array. The attempted conversion $-\mathrm{REF\_forces}-\mathrm{dftd3\_forces}$
+gives 16.68 meV/\AA, not the reported comparison. These outputs are diagnostic only.
+Neither file is accepted into the fitted benchmark. Their precise correspondence
+to published computational settings remains unresolved.
+
+\paragraph{Projection.}
+Three translation columns and three infinitesimal-rotation columns are constructed
+at centered coordinates. Translation columns are divided by $\sqrt N$ and rotation
+columns by the centered-coordinate Frobenius norm. An SVD retains singular values
+above $10^{-10}$ times the largest. This changes numerical scaling, not the subspace.
+
+\paragraph{Regression.}
+For calibration frames, $G=\sum X^TX$ and $b=\sum X^TP_R(y-f_{\mathrm{ref}})$.
+Columns with diagonal entries below $10^{-12}\max\operatorname{diag}G$ or the
+absolute floor $10^{-28}$ are removed. The remaining Gram matrix is scaled by
+$D=\operatorname{diag}(\sqrt{G_{jj}})$, so $H=D^{-1}GD^{-1}$ has unit diagonal.
+Ridge penalties are $10^{-6},10^{-5},\ldots,10^2$. Truncation cutoffs relative to
+the largest eigenvalue are $10^{-6},10^{-4},10^{-3},10^{-2},0.03,0.1,0.3$.
+MP bulk blend strengths are $0.25,0.5,0.75,1$ and ridge floors are
+$10^{-6},10^{-3},0.1,1$. No outer test label enters these choices. The
+element-variance floor is $10^{-3}$ times the pooled variance, or $10^{-20}$,
+whichever is larger.
+
+\paragraph{Known-floor shrinker.}
+In the Gaussian illustration, let $\gamma=p/m$ and $\lambda$ be a sample
+eigenvalue. Eigenvalues below $(1+\sqrt\gamma)^2$ are replaced by one. Above that
+edge, set
+\begin{align}
+ \ell&=\tfrac12\bigl[\lambda+1-\gamma+
+ \sqrt{(\lambda+1-\gamma)^2-4\lambda}\bigr],\\
+ c^2&=\frac{1-\gamma/(\ell-1)^2}{1+\gamma/(\ell-1)},\qquad
+ \eta(\lambda)=1+(\ell-1)c^2.
+\end{align}
+This applies the spiked-model Frobenius shrinkage formula
+\citep{donoho2017}; no finite-sample optimality for conditional force risk is claimed.
+
+\paragraph{Verification.}
+Analytic conservative pair-potential columns were used to check invariance and
+\eqref{eq:noop} on 80 configurations. Maximum normal-equation disagreement was
+$5.33\times10^{-15}$, and maximum relative squared-loss identity error was
+$4.67\times10^{-16}$. Rotation/translation and atom-permutation checks of the
+correction design were below $1.55\times10^{-15}$ in absolute value. Across
+12,000 synthetic method results the risk identity residual was below
+$7.11\times10^{-15}$. These numerical checks support implementation consistency;
+the propositions themselves are proved algebraically above.
+
+\bibliographystyle{plainnat}
+\bibliography{references}
+\end{document}

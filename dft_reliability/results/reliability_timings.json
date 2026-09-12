@@ -1,0 +1,72 @@
+[
+  {
+    "dataset": "aimnet2",
+    "scenario": 0,
+    "seed_count": 201,
+    "pool_count": 799,
+    "fit_seconds": 0.520200425999974
+  },
+  {
+    "dataset": "aimnet2",
+    "scenario": 1,
+    "seed_count": 202,
+    "pool_count": 798,
+    "fit_seconds": 0.564205740000034
+  },
+  {
+    "dataset": "aimnet2",
+    "scenario": 2,
+    "seed_count": 224,
+    "pool_count": 776,
+    "fit_seconds": 0.5690646209995975
+  },
+  {
+    "dataset": "aimnet2",
+    "scenario": 3,
+    "seed_count": 169,
+    "pool_count": 831,
+    "fit_seconds": 0.5272398990000511
+  },
+  {
+    "dataset": "aimnet2",
+    "scenario": 4,
+    "seed_count": 204,
+    "pool_count": 796,
+    "fit_seconds": 0.5657716810001148
+  },
+  {
+    "dataset": "transition1x",
+    "scenario": 0,
+    "seed_count": 166,
+    "pool_count": 834,
+    "fit_seconds": 0.4405083330002526
+  },
+  {
+    "dataset": "transition1x",
+    "scenario": 1,
+    "seed_count": 213,
+    "pool_count": 787,
+    "fit_seconds": 0.5379886279997663
+  },
+  {
+    "dataset": "transition1x",
+    "scenario": 2,
+    "seed_count": 191,
+    "pool_count": 809,
+    "fit_seconds": 0.5345850129997416
+  },
+  {
+    "dataset": "transition1x",
+    "scenario": 3,
+    "seed_count": 154,
+    "pool_count": 846,
+    "fit_seconds": 0.484125500999653
+  },
+  {
+    "dataset": "transition1x",
+    "scenario": 4,
+    "seed_count": 276,
+    "pool_count": 724,
+    "fit_seconds": 0.615089547000025
+  }
+]

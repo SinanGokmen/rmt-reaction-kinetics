@@ -1,0 +1,142 @@
+[
+  {
+    "dataset": "aimnet2",
+    "scenario": 0,
+    "method": "ridge",
+    "alpha": 0.01,
+    "cv_log_mse": 0.03515928687479502
+  },
+  {
+    "dataset": "aimnet2",
+    "scenario": 0,
+    "method": "mp_ridge",
+    "alpha": 1.0,
+    "cv_log_mse": 0.03556579324312264
+  },
+  {
+    "dataset": "aimnet2",
+    "scenario": 1,
+    "method": "ridge",
+    "alpha": 1.0,
+    "cv_log_mse": 0.030649175850648542
+  },
+  {
+    "dataset": "aimnet2",
+    "scenario": 1,
+    "method": "mp_ridge",
+    "alpha": 1.0,
+    "cv_log_mse": 0.030576996950855518
+  },
+  {
+    "dataset": "aimnet2",
+    "scenario": 2,
+    "method": "ridge",
+    "alpha": 1.0,
+    "cv_log_mse": 0.02324807837811029
+  },
+  {
+    "dataset": "aimnet2",
+    "scenario": 2,
+    "method": "mp_ridge",
+    "alpha": 1.0,
+    "cv_log_mse": 0.022511969989114724
+  },
+  {
+    "dataset": "aimnet2",
+    "scenario": 3,
+    "method": "ridge",
+    "alpha": 0.01,
+    "cv_log_mse": 0.02744685449895527
+  },
+  {
+    "dataset": "aimnet2",
+    "scenario": 3,
+    "method": "mp_ridge",
+    "alpha": 1.0,
+    "cv_log_mse": 0.0268025340795804
+  },
+  {
+    "dataset": "aimnet2",
+    "scenario": 4,
+    "method": "ridge",
+    "alpha": 1.0,
+    "cv_log_mse": 0.029372887212969094
+  },
+  {
+    "dataset": "aimnet2",
+    "scenario": 4,
+    "method": "mp_ridge",
+    "alpha": 1.0,
+    "cv_log_mse": 0.02642584626747557
+  },
+  {
+    "dataset": "transition1x",
+    "scenario": 0,
+    "method": "ridge",
+    "alpha": 1.0,
+    "cv_log_mse": 0.03509523863025931
+  },
+  {
+    "dataset": "transition1x",
+    "scenario": 0,
+    "method": "mp_ridge",
+    "alpha": 100.0,
+    "cv_log_mse": 0.03593772001574102
+  },
+  {
+    "dataset": "transition1x",
+    "scenario": 1,
+    "method": "ridge",
+    "alpha": 1.0,
+    "cv_log_mse": 0.17626451412426689
+  },
+  {
+    "dataset": "transition1x",
+    "scenario": 1,
+    "method": "mp_ridge",
+    "alpha": 1.0,
+    "cv_log_mse": 0.17854571152876972
+  },
+  {
+    "dataset": "transition1x",
+    "scenario": 2,
+    "method": "ridge",
+    "alpha": 1.0,
+    "cv_log_mse": 0.03597942500501851
+  },
+  {
+    "dataset": "transition1x",
+    "scenario": 2,
+    "method": "mp_ridge",
+    "alpha": 1.0,
+    "cv_log_mse": 0.036207187880706294
+  },
+  {
+    "dataset": "transition1x",
+    "scenario": 3,
+    "method": "ridge",
+    "alpha": 1.0,
+    "cv_log_mse": 0.03369101877635222
+  },
+  {
+    "dataset": "transition1x",
+    "scenario": 3,
+    "method": "mp_ridge",
+    "alpha": 1.0,
+    "cv_log_mse": 0.03472793018383966
+  },
+  {
+    "dataset": "transition1x",
+    "scenario": 4,
+    "method": "ridge",
+    "alpha": 1.0,
+    "cv_log_mse": 0.034849289177925964
+  },
+  {
+    "dataset": "transition1x",
+    "scenario": 4,
+    "method": "mp_ridge",
+    "alpha": 1.0,
+    "cv_log_mse": 0.03565663349830983
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "file": "ani_1x_tz_configs.xyz",
+    "source_url": "https://raw.githubusercontent.com/water-ice-group/datasets_dft_accuracy/322a41229f7707a58626a7c03ce850d67920fad0/force_discrepancies/ani_1x_tz_configs.xyz",
+    "upstream_commit": "322a41229f7707a58626a7c03ce850d67920fad0",
+    "git_blob": "9e7139d1f1982d518c8d11fa4562b1d0cdc9cc9d",
+    "sha256": "6d9067c873788df9a3d48687ce44af7d33ec1d4b721c202813cd862fdb0e40f8",
+    "bytes": 2572744
+  },
+  {
+    "file": "transition1x_configs.xyz",
+    "source_url": "https://raw.githubusercontent.com/water-ice-group/datasets_dft_accuracy/322a41229f7707a58626a7c03ce850d67920fad0/force_discrepancies/transition1x_configs.xyz",
+    "upstream_commit": "322a41229f7707a58626a7c03ce850d67920fad0",
+    "git_blob": "40e0cce4f7aaa07e8eea23a29226bba61df7ba28",
+    "sha256": "f788d97bfb790208943374aaa285a77d85c2e3a484efd107d5f913e05621e596",
+    "bytes": 2290266
+  },
+  {
+    "file": "aimnet2_configs.xyz",
+    "source_url": "https://raw.githubusercontent.com/water-ice-group/datasets_dft_accuracy/322a41229f7707a58626a7c03ce850d67920fad0/force_discrepancies/aimnet2_configs.xyz",
+    "upstream_commit": "322a41229f7707a58626a7c03ce850d67920fad0",
+    "git_blob": "d0fd4a3b826f47b61040ccbac9ec5d8ff6fa9d5e",
+    "sha256": "79675c154e1448d39630f000ba7c0788d5d1eece04cd82ac3447ba8b1e01c852",
+    "bytes": 3440835
+  },
+  {
+    "file": "spice_configs.xyz",
+    "source_url": "https://raw.githubusercontent.com/water-ice-group/datasets_dft_accuracy/322a41229f7707a58626a7c03ce850d67920fad0/force_discrepancies/spice_configs.xyz",
+    "upstream_commit": "322a41229f7707a58626a7c03ce850d67920fad0",
+    "git_blob": "80bd6fb1bb0b12fdfb9dc7a9d5b493442e2d521e",
+    "sha256": "cf1f05307bba81a58c05324173a63184a00627d8b05f3da9374a42d24bf2e049",
+    "bytes": 7214570
+  }
+]

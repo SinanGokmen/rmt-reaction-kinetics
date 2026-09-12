@@ -1,0 +1,58 @@
+[
+  {
+    "dataset": "ani_1x_tz",
+    "comparison_validated": false,
+    "n_configs": 1000,
+    "n_formulas": 463,
+    "n_components": 46887,
+    "raw_rmse_mev_A": 173.85891725877588,
+    "translation_rmse_mev_A": 173.85891725877408,
+    "rigid_rmse_mev_A": 173.85874261156295,
+    "tangent_error_rmse_mev_A": 173.85873473076083,
+    "normal_error_rmse_mev_A": 0.2519289837810436,
+    "ref_normal_rmse_mev_A": 0.05234780491724602,
+    "tangent_fraction": 0.9999979002754404
+  },
+  {
+    "dataset": "transition1x",
+    "comparison_validated": true,
+    "n_configs": 1000,
+    "n_formulas": 122,
+    "n_components": 41394,
+    "raw_rmse_mev_A": 26.90065431450283,
+    "translation_rmse_mev_A": 26.8942171747883,
+    "rigid_rmse_mev_A": 26.885282014452187,
+    "tangent_error_rmse_mev_A": 26.88523227035018,
+    "normal_error_rmse_mev_A": 0.910762492476524,
+    "ref_normal_rmse_mev_A": 0.05171813945390361,
+    "tangent_fraction": 0.9988537361751589
+  },
+  {
+    "dataset": "aimnet2",
+    "comparison_validated": true,
+    "n_configs": 1000,
+    "n_formulas": 977,
+    "n_components": 63321,
+    "raw_rmse_mev_A": 4.79790976060171,
+    "translation_rmse_mev_A": 4.714333471262515,
+    "rigid_rmse_mev_A": 4.609166379323423,
+    "tangent_error_rmse_mev_A": 4.609113659208083,
+    "normal_error_rmse_mev_A": 1.3326700069329476,
+    "ref_normal_rmse_mev_A": 0.022045153364973823,
+    "tangent_fraction": 0.9228490823081104
+  },
+  {
+    "dataset": "spice",
+    "comparison_validated": false,
+    "n_configs": 998,
+    "n_formulas": 926,
+    "n_components": 100881,
+    "raw_rmse_mev_A": 16.676436476777912,
+    "translation_rmse_mev_A": 16.675830601367206,
+    "rigid_rmse_mev_A": 16.67526065092341,
+    "tangent_error_rmse_mev_A": 16.675254364615252,
+    "normal_error_rmse_mev_A": 0.1985584029671246,
+    "ref_normal_rmse_mev_A": 0.01447935133088155,
+    "tangent_fraction": 0.9998582346693563
+  }
+]

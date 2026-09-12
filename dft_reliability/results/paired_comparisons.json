@@ -1,0 +1,82 @@
+[
+  {
+    "dataset": "aimnet2",
+    "method": "mp_bulk",
+    "baseline": "rigid",
+    "delta_rmse_mev_A": -0.11825216093782308,
+    "ci95_low": -0.13286787879144085,
+    "ci95_high": -0.10333141554890651
+  },
+  {
+    "dataset": "aimnet2",
+    "method": "mp_bulk",
+    "baseline": "ridge",
+    "delta_rmse_mev_A": -0.0030588775289793965,
+    "ci95_low": -0.006932537147964268,
+    "ci95_high": 0.00021984017817934312
+  },
+  {
+    "dataset": "aimnet2",
+    "method": "mp_bulk",
+    "baseline": "element_weighted",
+    "delta_rmse_mev_A": 0.010903784733185158,
+    "ci95_low": 0.004633363737970497,
+    "ci95_high": 0.017223930992764837
+  },
+  {
+    "dataset": "aimnet2",
+    "method": "element_weighted",
+    "baseline": "rigid",
+    "delta_rmse_mev_A": -0.12915594567100824,
+    "ci95_low": -0.14481586034464228,
+    "ci95_high": -0.11289354509831072
+  },
+  {
+    "dataset": "aimnet2",
+    "method": "ridge",
+    "baseline": "rigid",
+    "delta_rmse_mev_A": -0.11519328340884369,
+    "ci95_low": -0.13083350856559292,
+    "ci95_high": -0.099197219547736
+  },
+  {
+    "dataset": "transition1x",
+    "method": "mp_bulk",
+    "baseline": "rigid",
+    "delta_rmse_mev_A": -0.0019935287343605945,
+    "ci95_low": -0.031087698896647496,
+    "ci95_high": 0.0011627054718715605
+  },
+  {
+    "dataset": "transition1x",
+    "method": "mp_bulk",
+    "baseline": "ridge",
+    "delta_rmse_mev_A": -0.0003350333460591659,
+    "ci95_low": -0.002036841090467689,
+    "ci95_high": 0.010142672217430303
+  },
+  {
+    "dataset": "transition1x",
+    "method": "mp_bulk",
+    "baseline": "element_weighted",
+    "delta_rmse_mev_A": -0.003950643573936291,
+    "ci95_low": -0.06368685987786492,
+    "ci95_high": 0.002505536239917381
+  },
+  {
+    "dataset": "transition1x",
+    "method": "element_weighted",
+    "baseline": "rigid",
+    "delta_rmse_mev_A": 0.0019571148395756965,
+    "ci95_low": -0.0018143558307029295,
+    "ci95_high": 0.04146284149597785
+  },
+  {
+    "dataset": "transition1x",
+    "method": "ridge",
+    "baseline": "rigid",
+    "delta_rmse_mev_A": -0.0016584953883014286,
+    "ci95_low": -0.03734380775046545,
+    "ci95_high": 0.0031513007622807586
+  }
+]

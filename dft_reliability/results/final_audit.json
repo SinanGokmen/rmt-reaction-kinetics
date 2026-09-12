@@ -1,0 +1,12 @@
+{
+  "aimnet2": {
+    "n_frames": 1000,
+    "groups": 977,
+    "weighted_constraint_residual": 4.083818658568264e-15
+  },
+  "transition1x": {
+    "n_frames": 1000,
+    "groups": 122,
+    "weighted_constraint_residual": 5.551115123125783e-16
+  }
+}
