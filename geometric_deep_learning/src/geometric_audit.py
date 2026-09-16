@@ -1,10 +1,14 @@
 """Small O(3)-invariant radial message network for force-discrepancy auditing.
 NumPy CPU reference implementation, not SchNet or an interatomic potential.
 """
-import argparse, json, hashlib
+import argparse, json, hashlib, sys
+from pathlib import Path
+# Reuse the pinned project's parser and baseline utilities.
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'dft_reliability' / 'src'))
 import numpy as np
 import pandas as pd
-from data_utils import ROOT, load_dataset
+from data_utils import load_dataset
+ROOT = Path(__file__).resolve().parents[1]
 from denoise_benchmark import fold_for
 from reliability_benchmark import top
 ELEMENTS=['H','C','N','O','F','S','Cl','other']
@@ -65,7 +69,7 @@ def predict(model,gs):
     return forward(theta,(X-mu)/sd,ids,sizes)[0]*ys+ym
 
 def run(seed):
-    out=ROOT/'results'/'geometric_audit';out.mkdir(exist_ok=True,parents=True)
+    out=ROOT/'results';out.mkdir(exist_ok=True,parents=True)
     metrics=[];predictions=[];settings=[]
     for name in ['aimnet2','transition1x']:
         rr=load_dataset(name); gs=[graph(r) for r in rr]; groups=np.array([r['formula'] for r in rr])

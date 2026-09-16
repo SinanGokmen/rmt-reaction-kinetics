@@ -55,16 +55,17 @@ No cleaned-data model was trained, and no new DFT calculation was performed.
 
 ## Reproduce
 
-From `dft_reliability/`, using the existing requirements:
+From the repository root (shared data and dependencies remain under `dft_reliability/`):
 
 ```bash
-python src/download_data.py
-OPENBLAS_NUM_THREADS=1 python src/geometric_audit.py --seed 20260916
-OPENBLAS_NUM_THREADS=1 python src/verify_geometric.py
+python -m pip install -r dft_reliability/requirements.txt
+python dft_reliability/src/download_data.py
+OPENBLAS_NUM_THREADS=1 python geometric_deep_learning/src/geometric_audit.py --seed 20260916
+OPENBLAS_NUM_THREADS=1 python geometric_deep_learning/src/verify_geometric.py
 ```
 
 Runs save models, per-scenario metrics, compressed record predictions and tuning
-counts to `results/geometric_audit/`. The verification script targets the recorded
+counts to `geometric_deep_learning/results/`. The verification script targets the recorded
 seed 20260916. Model NPZ files can be regenerated from the stated seed; the GitHub
 extension stores the metrics, settings, verification and predictions. Re-running
 a seed overwrites its outputs; use a separate checkout for experimental changes.
@@ -72,4 +73,4 @@ a seed overwrites its outputs; use a separate checkout for experimental changes.
 Checks passed: finite-difference gradients (max error 3.46e-11), rigid-motion/node
 permutation invariance, zero reference-input leakage and reconstruction of all
 saved acquisition metrics (max difference below 2e-16). This checks implementation
-integrity, not scientific superiority. See GEOMETRIC_PROTOCOL.md for the protocol.
+integrity, not scientific superiority. See [the protocol](notes/GEOMETRIC_PROTOCOL.md) for the protocol.

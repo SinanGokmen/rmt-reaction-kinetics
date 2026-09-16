@@ -2,8 +2,8 @@
 import copy,json
 import numpy as np
 import pandas as pd
-from geometric_audit import graph,pack,init,forward,loss_grad,predict
-from data_utils import ROOT,load_dataset
+from geometric_audit import ROOT,graph,pack,init,forward,loss_grad,predict
+from data_utils import load_dataset
 from denoise_benchmark import fold_for
 from reliability_benchmark import top
 rng=np.random.default_rng(51);rr=load_dataset('aimnet2');r=rr[0];g=graph(r)
@@ -23,7 +23,7 @@ invariance=float(abs(predict(model,[g])[0]-predict(model,[graph(r2)])[0]));asser
 r2=copy.deepcopy(r);r2['Fref']=rng.normal(size=r['Fref'].shape)*1e9
 assert np.array_equal(graph(r2),g)
 result=dict(gradient_max_error=float(max(errs)),rigid_permutation_prediction_error=invariance,reference_feature_leakage=0.)
-out=ROOT/'results/geometric_audit';seed=20260916
+out=ROOT/'results';seed=20260916
 prediction_path=out/f'predictions_seed{seed}.csv.gz'
 if not prediction_path.exists(): prediction_path=out/f'predictions_seed{seed}.csv'
 p=pd.read_csv(prediction_path);m=pd.read_csv(out/f'metrics_seed{seed}.csv');reconstruction=[]
