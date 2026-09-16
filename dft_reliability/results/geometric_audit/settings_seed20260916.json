@@ -1,0 +1,82 @@
+[
+  {
+    "source": "aimnet2",
+    "scenario": 0,
+    "inner_train": 162,
+    "inner_validation": 39,
+    "refit": 201,
+    "epochs": 100
+  },
+  {
+    "source": "aimnet2",
+    "scenario": 1,
+    "inner_train": 162,
+    "inner_validation": 40,
+    "refit": 202,
+    "epochs": 100
+  },
+  {
+    "source": "aimnet2",
+    "scenario": 2,
+    "inner_train": 180,
+    "inner_validation": 44,
+    "refit": 224,
+    "epochs": 100
+  },
+  {
+    "source": "aimnet2",
+    "scenario": 3,
+    "inner_train": 135,
+    "inner_validation": 34,
+    "refit": 169,
+    "epochs": 50
+  },
+  {
+    "source": "aimnet2",
+    "scenario": 4,
+    "inner_train": 163,
+    "inner_validation": 41,
+    "refit": 204,
+    "epochs": 25
+  },
+  {
+    "source": "transition1x",
+    "scenario": 0,
+    "inner_train": 113,
+    "inner_validation": 53,
+    "refit": 166,
+    "epochs": 25
+  },
+  {
+    "source": "transition1x",
+    "scenario": 1,
+    "inner_train": 132,
+    "inner_validation": 81,
+    "refit": 213,
+    "epochs": 10
+  },
+  {
+    "source": "transition1x",
+    "scenario": 2,
+    "inner_train": 141,
+    "inner_validation": 50,
+    "refit": 191,
+    "epochs": 25
+  },
+  {
+    "source": "transition1x",
+    "scenario": 3,
+    "inner_train": 120,
+    "inner_validation": 34,
+    "refit": 154,
+    "epochs": 100
+  },
+  {
+    "source": "transition1x",
+    "scenario": 4,
+    "inner_train": 207,
+    "inner_validation": 69,
+    "refit": 276,
+    "epochs": 10
+  }
+]
